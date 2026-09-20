@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IPSO Instagram Content Plan, Fall 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F2F5F8; --surface:#FFFFFF; --ink:#12203A; --muted:#56637A; --line:#D3DBE6;
+  --t1:#3B6CF4; --t2:#0FA391; --t3:#EE9B21; --t4:#C23C8E;
+  --st-bg:#0A1F2E; --st-panel:rgba(255,255,255,.06); --st-ink:#EAF2F8; --st-muted:#9FB3C4; --st-line:rgba(255,255,255,.15);
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D1726; --surface:#142339; --ink:#E8EEF7; --muted:#9AA8BF; --line:#27395A;
+    --st-bg:#050B14;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D1726; --surface:#142339; --ink:#E8EEF7; --muted:#9AA8BF; --line:#27395A;
+  --st-bg:#050B14;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--t1);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.08}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+
+/* ---------- Top ---------- */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.top b{color:var(--ink);font-weight:600}
+.hero{padding:34px 0 56px;max-width:760px}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.4rem);font-weight:700}
+.hero p{margin-top:20px;font-size:1.15rem;color:var(--muted);max-width:56ch}
+
+/* ---------- Chart ---------- */
+.chart-sec{padding-bottom:150px}
+.chart{position:relative}
+.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.links path{fill:none;stroke-width:2;stroke-linecap:round}
+.links .dim{opacity:.28}
+.links .draw{stroke-width:2.5;stroke-dasharray:1;stroke-dashoffset:0;animation:draw .9s cubic-bezier(.3,.7,.2,1) both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+
+[hidden]{display:none!important}
+.chart.closed{padding:6px 0 40px}
+.root{position:relative;z-index:1;display:block;width:max-content;max-width:100%;margin:0 auto 72px;text-align:center;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:18px 44px;transition:transform .25s}
+.root:hover{transform:scale(1.03)}
+.chart.closed .root{margin-bottom:0;padding:26px 60px}
+.chart.closed .root strong{font-size:clamp(1.7rem,4vw,2.4rem)}
+.root strong{display:block;font-family:var(--display);font-size:1.5rem;font-weight:700;letter-spacing:-.01em}
+.root span{display:block;font-size:.9rem;opacity:.8}
+.root .hint{display:block;margin-top:8px;font-style:normal;font-size:.82rem;font-weight:600;opacity:.95;color:var(--t3)}
+.chart.closed .root::after{content:"";position:absolute;inset:-8px;border-radius:999px;border:2px solid var(--ink);opacity:0;animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{opacity:.5;transform:scale(.97)}100%{opacity:0;transform:scale(1.08)}}
+.cats.enter .cat{animation:fade .5s ease both}
+.cats.enter .cat:nth-child(2){animation-delay:.08s}.cats.enter .cat:nth-child(3){animation-delay:.16s}.cats.enter .cat:nth-child(4){animation-delay:.24s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.links .on{stroke-width:2.5}
+.btn2{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 15px;border-radius:99px;font-weight:600;font-size:.88rem}
+.btn2:hover{border-color:var(--c)}
+
+.cats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:92px}
+.cat{--c:var(--t1);display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:22px;padding:20px 20px 18px;transition:background .25s,border-color .25s,transform .25s}
+.cat:hover{border-color:var(--c)}
+.cat[aria-selected="true"]{background:color-mix(in srgb,var(--c) 13%,var(--surface));border-color:var(--c);box-shadow:0 0 0 1.5px var(--c)}
+.cat .nm{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.15;letter-spacing:-.015em}
+.cat .tm{font-size:.9rem;color:var(--muted);font-weight:500}
+.cat .aud{font-size:.86rem;color:var(--muted);line-height:1.4;margin-top:2px}
+.strip{display:grid;grid-template-columns:repeat(15,1fr);gap:3px;margin-top:10px}
+.strip i{height:10px;border-radius:3px;border:1.5px solid color-mix(in srgb,var(--c) 40%,transparent);background:transparent}
+.strip i.on{background:var(--c);border-color:var(--c)}
+.strip-cap{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:3px}
+
+.cap{display:none;position:relative;z-index:1;margin:-56px 0 30px;padding:14px 16px;border-left:4px solid var(--c);background:var(--surface);border-radius:0 12px 12px 0;font-size:.92rem;color:var(--muted)}
+
+.pillars{--c:var(--t1);position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;align-items:start}
+.pillar{animation:rise .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i) * 70ms)}
+@keyframes rise{from{opacity:0}to{opacity:1}}
+.pnode{position:relative;display:flex;flex-direction:column;gap:8px;width:100%;text-align:left;background:var(--surface);border:1.5px solid color-mix(in srgb,var(--c) 55%,var(--line));border-radius:14px;padding:14px 14px 14px;cursor:pointer}
+.pnode::after{content:"";position:absolute;right:44px;top:17px;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s,top .2s}
+.pillar.open .pnode::after{transform:rotate(-135deg);top:21px}
+.pillar:not(.open) .ideas{display:none}
+.pillar.open .ideas{animation:fade .4s ease both}
+.pname{font-family:var(--display);font-weight:700;font-size:1.08rem;letter-spacing:-.01em;padding-right:56px}
+.pgoal{font-size:.82rem;color:var(--muted);line-height:1.4}
+.share{display:flex;align-items:center;gap:8px;margin-top:2px}
+.track{flex:1;height:6px;border-radius:99px;background:color-mix(in srgb,var(--c) 18%,transparent);overflow:hidden}
+.track i{display:block;height:100%;background:var(--c);border-radius:99px}
+.share em{font-style:normal;font-size:.75rem;color:var(--muted);white-space:nowrap}
+.count{position:absolute;top:12px;right:12px;min-width:22px;height:22px;padding:0 6px;border-radius:99px;background:var(--c);color:#fff;font-size:.75rem;font-weight:600;display:grid;place-items:center}
+.cat-t2 .count,.cat-t3 .count{color:#07131f}
+.ideas{list-style:none;margin:0 0 0 20px;padding:14px 0 0 16px;border-left:2px solid color-mix(in srgb,var(--c) 40%,transparent)}
+.ideas li{position:relative;font-size:.9rem;line-height:1.42;padding:0 0 14px}
+.ideas li::before{content:"";position:absolute;left:-22px;top:.5em;width:10px;height:10px;border-radius:50%;background:var(--bg);border:2px solid var(--c)}
+.ideas li:last-child{padding-bottom:0}
+.tally{position:relative;z-index:1;margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;color:var(--muted);font-size:.95rem}
+.tally b{font-family:var(--display);font-size:1.5rem;color:var(--ink);letter-spacing:-.02em}
+.note{margin-top:14px;padding:14px 18px;border-radius:14px;background:color-mix(in srgb,var(--c) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 40%,var(--line));max-width:70ch;font-size:.95rem}
+
+/* ---------- Stage (the reveal) ---------- */
+.stage{--ink:var(--st-ink);--muted:var(--st-muted);--line:var(--st-line);--surface:var(--st-panel);
+  position:relative;background:var(--st-bg);color:var(--st-ink);border-radius:56px 56px 0 0;margin-top:-56px;padding:110px 0 90px;overflow:hidden}
+.stage::before{content:"";position:absolute;left:50%;top:-220px;width:900px;height:520px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(238,155,33,.30),rgba(238,155,33,0));pointer-events:none}
+.stage .wrap{position:relative}
+.reveal h2{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:700;max-width:14ch}
+.reveal p{margin-top:18px;max-width:60ch;color:var(--st-muted);font-size:1.08rem}
+.reveal p b{color:var(--st-ink);font-weight:600}
+.reveal>*{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal>*:nth-child(2){transition-delay:.15s}
+.stage.lit .reveal>*{opacity:1;transform:none}
+
+.controls{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;margin:48px 0 26px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:999px;background:var(--st-panel);border:1px solid var(--st-line)}
+.seg button{border:0;background:transparent;color:var(--st-muted);padding:8px 16px;border-radius:999px;font-weight:600;font-size:.92rem;line-height:1.2;text-align:left}
+.seg button small{display:block;font-weight:400;font-size:.72rem;opacity:.8}
+.seg button[aria-pressed="true"]{background:var(--st-ink);color:#0A1F2E}
+.switch{display:inline-flex;align-items:center;gap:10px;font-size:.92rem;color:var(--st-muted);cursor:pointer;user-select:none}
+.switch input{appearance:none;width:42px;height:24px;border-radius:99px;background:rgba(255,255,255,.18);position:relative;cursor:pointer;transition:background .2s;flex:none}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s}
+.switch input:checked{background:var(--t2)}
+.switch input:checked::after{transform:translateX(18px)}
+
+.podium-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.podium{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:end;height:400px;border-bottom:1px solid var(--st-line)}
+.pod{--on:#fff;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.pod[data-t="2"],.pod[data-t="3"]{--on:#07131f}
+.pod-top{padding:0 2px 12px}
+.pod-top .abbr{display:none}
+.pod-top b{display:block;font-family:var(--display);font-size:1.15rem;letter-spacing:-.01em;line-height:1.15}
+.pod-top span{font-size:.85rem;color:var(--st-muted)}
+.crown{display:block;width:30px;height:22px;margin-bottom:6px;color:var(--t3)}
+.bar{height:0;min-height:0;background:var(--c);color:var(--on);border-radius:16px 16px 0 0;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:14px 16px;transition:height 1.2s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.podium.go .bar{height:calc(var(--h) * 2.6px)}
+.bar .rk{font-size:.8rem;font-weight:600;opacity:.85}
+.bar .rt{font-family:var(--display);font-weight:700;font-size:clamp(1.5rem,3vw,2.3rem);letter-spacing:-.02em;line-height:1}
+.bar .gp{font-size:.8rem;opacity:.85;margin-top:auto}
+.podium-foot{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;color:var(--st-muted);font-size:.9rem}
+.prize{padding:6px 14px;border:1.5px dashed var(--st-line);border-radius:99px;color:var(--st-ink)}
+
+.banner{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between;margin:70px 0 26px;padding:14px 18px;border-radius:14px;background:rgba(238,155,33,.12);border:1px solid rgba(238,155,33,.4);font-size:.92rem}
+.btn{border:1.5px solid var(--st-line);background:transparent;color:var(--st-ink);padding:9px 16px;border-radius:999px;font-weight:600;font-size:.9rem}
+.btn:hover{border-color:var(--st-ink)}
+.btn.solid{background:var(--st-ink);color:#0A1F2E;border-color:var(--st-ink)}
+
+.dash-head{display:flex;flex-wrap:wrap;gap:16px 30px;justify-content:space-between;align-items:end;margin-bottom:24px}
+.dash-head h3{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.dash-head p{color:var(--st-muted);max-width:52ch;margin-top:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips button{border:1.5px solid var(--st-line);background:transparent;color:var(--st-muted);padding:6px 13px;border-radius:99px;font-size:.86rem;font-weight:600;display:inline-flex;align-items:center;gap:7px}
+.chips button[aria-pressed="true"]{border-color:var(--st-ink);color:var(--st-ink);background:rgba(255,255,255,.08)}
+.chips .dot{width:9px;height:9px;border-radius:50%;background:var(--c)}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--st-line);border-bottom:1px solid var(--st-line);margin-bottom:22px}
+.kpi{padding:20px 20px 20px 0}
+.kpi+.kpi{padding-left:22px;border-left:1px solid var(--st-line)}
+.kpi b{display:block;font-family:var(--display);font-size:clamp(1.6rem,3vw,2.5rem);letter-spacing:-.02em;line-height:1.1}
+.kpi span{font-size:.88rem;color:var(--st-muted)}
+
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.panel{background:var(--st-panel);border:1px solid var(--st-line);border-radius:20px;padding:22px}
+.panel h4{font-family:var(--display);font-size:1.15rem;margin:0 0 4px;letter-spacing:-.01em}
+.panel .sub{font-size:.85rem;color:var(--st-muted);margin-bottom:18px}
+.span7{grid-column:span 7}.span5{grid-column:span 5}.span12{grid-column:span 12}
+
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.82rem;color:var(--st-muted);margin-bottom:6px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:3px;border-radius:2px;background:var(--c)}
+svg.trend{width:100%;height:auto;display:block}
+svg.trend text{fill:var(--st-muted);font-size:11px;font-family:var(--body)}
+
+.row{display:grid;grid-template-columns:120px minmax(0,1fr) 54px;gap:12px;align-items:center;margin-bottom:12px;font-size:.88rem}
+.row .lb{color:var(--st-ink);font-weight:500}
+.meter{position:relative;height:12px;border-radius:99px;background:rgba(255,255,255,.09)}
+.meter i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;background:var(--st-ink);transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.meter u{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--t3);border-radius:2px}
+.row .vl{text-align:right;font-variant-numeric:tabular-nums;color:var(--st-muted)}
+.key{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--st-muted);margin-top:6px}
+.key span{display:inline-flex;align-items:center;gap:6px}
+.key i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--st-ink)}
+.key u{display:inline-block;width:2px;height:12px;background:var(--t3);text-decoration:none}
+.warn{margin-top:14px;padding:12px 14px;border-radius:12px;background:rgba(194,60,142,.16);border:1px solid rgba(194,60,142,.5);font-size:.88rem}
+
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:520px}
+th{text-align:left;font-weight:600;color:var(--st-muted);font-size:.82rem;padding:8px 12px 8px 0;border-bottom:1px solid var(--st-line)}
+td{padding:11px 12px 11px 0;border-bottom:1px solid var(--st-line);font-variant-numeric:tabular-nums}
+td .tag{display:inline-flex;align-items:center;gap:7px}
+td .tag i{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.empty{color:var(--st-muted);font-size:.92rem;padding:10px 0}
+
+form.log{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+form.log label{display:flex;flex-direction:column;gap:6px;font-size:.84rem;color:var(--st-muted)}
+form.log input,form.log select{background:rgba(255,255,255,.07);border:1px solid var(--st-line);border-radius:10px;padding:10px 12px;color:var(--st-ink);min-width:0}
+form.log select option{color:#12203A}
+form.log .act{grid-column:1/-1;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+#status{font-size:.9rem;color:var(--st-muted)}
+
+footer{background:var(--st-bg);color:var(--st-muted);padding:30px 0 50px;font-size:.88rem;border-top:1px solid var(--st-line)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 30px;justify-content:space-between}
+footer a{color:var(--st-ink)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:999px){
+  .links{display:none}
+  .root{margin-bottom:28px}
+  .cats{grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:26px}
+  .cat .aud{display:none}
+  .cap{display:block;margin-top:0}
+  .pillars{grid-template-columns:minmax(0,1fr);gap:18px}
+  .chart-sec{padding-bottom:110px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .span7,.span5,.span12{grid-column:auto}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .kpi:nth-child(3){padding-left:0;border-left:0}
+  .kpi:nth-child(n+3){border-top:1px solid var(--st-line)}
+  form.log{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .podium{height:340px;gap:8px}
+  .podium.go .bar{height:calc(var(--h) * 2.1px)}
+  .bar{padding:10px}
+  .pod-top .full{display:none}
+  .pod-top .abbr{display:inline}
+  .row{grid-template-columns:96px minmax(0,1fr) 46px;gap:8px}
+  .stage{border-radius:36px 36px 0 0;padding-top:90px}
+}
+@media (max-width:420px){
+  .cat{padding:16px 14px}
+  .cat .nm{font-size:1.1rem}
+  .strip{gap:2px}
+  .strip i{height:8px}
+  .strip-cap span:nth-child(2){display:none}
+}
+@media (max-width:340px){
+  .cats{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal>*{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <span><b>American University in Cairo</b>, International Programs and Services Office</span>
+    <span>Version 4, Fall 2026</span>
+  </div>
+  <header class="hero">
+    <h1>How IPSO’s Instagram is organized</h1>
+    <p>Start with the account. Click it to open the four categories, click a category to see its five pillars, then click a pillar to see the ideas inside it.</p>
+  </header>
+</div>
+
+<section class="chart-sec" aria-label="Content hierarchy">
+  <div class="wrap">
+    <div class="chart closed" id="chart">
+      <svg class="links" id="links" aria-hidden="true"></svg>
+
+      <button class="root" id="root" type="button" aria-expanded="false" aria-controls="cats">
+        <strong>IPSO Instagram</strong>
+        <span>14 International Peer Leaders, 15 teaching weeks</span>
+        <em class="hint">Click to open</em>
+      </button>
+
+      <div class="cats" id="cats" role="tablist" aria-label="Content categories" hidden></div>
+      <div class="cap" id="cap" hidden></div>
+      <div class="pillars" id="pillars" role="tabpanel" hidden></div>
+      <div id="below"></div>
+    </div>
+  </div>
+</section>
+
+<section class="stage" id="stage" aria-label="Monthly competition and dashboard">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Every month, one team wins.</h2>
+      <p>Each category team is scored on <b>engagement rate</b>: likes + comments + shares + saves, divided by reach, averaged across the team’s posts. Quality beats volume, so posting more doesn’t help unless the posts land.</p>
+    </div>
+
+    <div class="controls">
+      <div class="seg" id="months" role="group" aria-label="Period"></div>
+      <label class="switch"><input type="checkbox" id="crossToggle"> Count campaign posts toward every team</label>
+    </div>
+
+    <div class="podium-wrap">
+      <div class="podium" id="podium" aria-live="polite"></div>
+      <div class="podium-foot">
+        <span id="podiumNote">Podium height shows rank. The percentages are the real scores.</span>
+        <span class="prize">Prize: the group decides at the first sync</span>
+      </div>
+    </div>
+
+    <div class="banner" id="banner"></div>
+
+    <div class="dash-head">
+      <div>
+        <h3>The dashboard</h3>
+        <p>Built from the columns of the Post Log (Appendix A). Filter by team to see how each one mixes pillars and formats.</p>
+      </div>
+      <div class="chips" id="teamChips" role="group" aria-label="Team filter"></div>
+    </div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <div class="grid">
+      <div class="panel span7">
+        <h4>Weekly engagement rate</h4>
+        <div class="sub">Average per team, weeks 1 to 15. The shaded band is the selected period.</div>
+        <div class="legend" id="legend"></div>
+        <div id="trend"></div>
+      </div>
+      <div class="panel span5">
+        <h4>Pillar mix against the plan</h4>
+        <div class="sub">Share of posts in each pillar. The amber tick marks the planned share.</div>
+        <div id="mix"></div>
+        <div class="key"><span><i></i>Actual</span><span><u></u>Plan</span></div>
+        <div id="mixWarn"></div>
+      </div>
+      <div class="panel span5">
+        <h4>Which formats work</h4>
+        <div class="sub">Average engagement rate by format.</div>
+        <div id="formats"></div>
+      </div>
+      <div class="panel span7">
+        <h4>Best posts</h4>
+        <div class="sub">Top six by engagement rate in this view.</div>
+        <div class="tbl-wrap" id="best"></div>
+      </div>
+      <div class="panel span12">
+        <h4>Log a post</h4>
+        <div class="sub">Fill this in one week after publishing, once the numbers have settled. Entries are saved in this browser only, so keep the shared sheet as your source of truth.</div>
+        <form class="log" id="logForm">
+          <label>Week<input type="number" name="week" min="1" max="15" value="1" required></label>
+          <label>Team
+            <select name="team">
+              <option value="1">Team 1, Study Abroad</option>
+              <option value="2">Team 2, Partner Universities</option>
+              <option value="3">Team 3, Incoming Students</option>
+              <option value="4">Team 4, Faculty-Led Programs</option>
+              <option value="Cross">Campaign (all teams)</option>
+            </select>
+          </label>
+          <label>Pillar
+            <select name="pillar">
+              <option value="edu">Educational</option>
+              <option value="eng">Engagement</option>
+              <option value="insp">Inspirational</option>
+              <option value="promo">Promotional</option>
+              <option value="bts">Behind-the-Scenes</option>
+            </select>
+          </label>
+          <label>Format
+            <select name="format">
+              <option>Reel</option><option>Carousel</option><option>Single image</option><option>Story set</option>
+            </select>
+          </label>
+          <label>Likes<input type="number" name="likes" min="0" value="0" required></label>
+          <label>Comments<input type="number" name="comments" min="0" value="0" required></label>
+          <label>Shares<input type="number" name="shares" min="0" value="0" required></label>
+          <label>Saves<input type="number" name="saves" min="0" value="0" required></label>
+          <label>Reach<input type="number" name="reach" min="1" value="1000" required></label>
+          <div class="act">
+            <button class="btn solid" type="submit">Add to log</button>
+            <span id="status" role="status"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Source: IPSO Instagram Content Plan, version 4. Prepared for the 14 IPLs and IPSO staff.</span>
+    <span>Exact dates live in the <a href="https://docs.google.com/spreadsheets/d/1FTN87W8MmGNqzpUm5sJgQ4ulf2AeoG9sMiVd0MGGQoY" target="_blank" rel="noopener">calendar spreadsheet</a>.</span>
+  </div>
+</footer>
+
+<script>
+/* ============================ DATA ============================ */
+var PILLARS = [
+  {id:'edu',  name:'Educational',       goal:'Answer FAQs, demystify the process, build trust', share:30},
+  {id:'eng',  name:'Engagement',        goal:'Get comments, DMs and participation, not just views', share:20},
+  {id:'insp', name:'Inspirational',     goal:'Emotional connection, aspiration, real voices', share:25},
+  {id:'promo',name:'Promotional',       goal:'Deadlines, applications, events', share:15},
+  {id:'bts',  name:'Behind-the-Scenes', goal:'Humanise the office, show process', share:10}
+];
+var PNAME = {}; PILLARS.forEach(function(p){PNAME[p.id]=p.name});
+
+var CATS = [
+  {id:'1', name:'Study Abroad (Outbound)', short:'Study Abroad', team:'Team 1', ipls:4,
+   audience:'Current AUC students considering or currently on exchange',
+   weeks:[4,5,6,13],
+   ideas:{
+    edu:['“How to choose your exchange university” carousel','Visa and application timeline explainer','Credit transfer explainer','Cost and scholarship breakdown','Myth-busting: “you’ll fall behind academically” is false'],
+    eng:['“Guess the country” from a photo','Poll: “Which continent would you study in?”','Comment your dream destination'],
+    insp:['Weekly “AUC Abroad” student takeover in Stories, from wherever they currently are','Before/after packing-day vs. arrival-day Reel','Testimonial quote cards'],
+    promo:['Application deadline countdowns','Info-session announcements','Nomination results'],
+    bts:['Pre-departure orientation day','“What’s in my suitcase” Reel']
+   }},
+  {id:'2', name:'Partner Universities', short:'Partner Universities', team:'Team 2', ipls:3,
+   audience:'Prospective outbound students, plus general awareness of AUC’s global network',
+   weeks:[5,6,7,8,9,10,11,12,13,14,15],
+   note:'Team 2 carries the only genuinely weekly series in the plan. Build a bank of at least eight Partner Spotlights before Week 5 so it never stalls mid-semester.',
+   ideas:{
+    edu:['“Partner Spotlight” series: one university per week, covering location, strengths and unique courses','Interactive map Story of all partner regions'],
+    eng:['“This or that” between two partner cities','Trivia: “Guess which partner university this landmark belongs to”'],
+    insp:['Clips and photos from partner universities’ own social media (with credit) or from AUC alumni who studied there','“Why I chose [University]” quote graphics'],
+    promo:['New partnership announcements','Joint programme launches','Visiting delegation recaps'],
+    bts:['Footage from partner visits to AUC campus: campus tours, MOU signings']
+   }},
+  {id:'3', name:'Incoming Students', short:'Incoming Students', team:'Team 3', ipls:4,
+   audience:'Incoming and current exchange students at AUC, plus the AUC community welcoming them',
+   weeks:[1,2,3,8,14],
+   ideas:{
+    edu:['“Settling into Cairo” survival guide: housing, transport, SIM cards, banking','Arabic 101 phrases carousel','Academic advising and registration explainer'],
+    eng:['“Introduce yourself” Story template for new arrivals','Poll: “First thing you want to try in Cairo?”','Comment your home country flag'],
+    insp:['“New in Cairo” takeover series: a different incoming student each week on their first impressions','Honest culture-shock Reels'],
+    promo:['Welcome week schedule','International Student Buddy programme sign-ups','Cultural event invites'],
+    bts:['Airport pickup and arrival-day footage','Orientation day bloopers','IPLs prepping welcome kits']
+   }},
+  {id:'4', name:'Faculty-Led Programs', short:'Faculty-Led Programs', team:'Team 4', ipls:3,
+   audience:'AUC students weighing a short-term or summer programme',
+   weeks:[9,12],
+   ideas:{
+    edu:['“What is a faculty-led program?” explainer vs. semester exchange','How credits and cost work','Application steps carousel'],
+    eng:['Poll: “Which faculty-led destination interests you most?”','“Guess the course” from a site-visit photo'],
+    insp:['Faculty and student testimonials from past cohorts','Recap Reels set to trending audio from the trip itself','“A day on the program” mini-vlog'],
+    promo:['Programme announcements per school or department','Application deadlines','Info sessions with the leading faculty member'],
+    bts:['Faculty prepping the itinerary','Group photos from site visits','Packing and pre-departure meeting']
+   }}
+];
+var CAT = {}; CATS.forEach(function(c){CAT[c.id]=c});
+
+/* ============================ HELPERS ============================ */
+var $ = function(s){return document.querySelector(s)};
+var pct = function(v,d){return (v*100).toFixed(d==null?1:d)+'%'};
+var mean = function(a){return a.reduce(function(x,y){return x+y},0)/a.length};
+var wide = function(){return window.innerWidth>=1000};
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================ CHART ============================ */
+var sel = null, rootOpen = false, lastAnim = 0;
+var catsEl=$('#cats'), pillarsEl=$('#pillars'), svg=$('#links'), chart=$('#chart'), rootEl=$('#root'), capEl=$('#cap'), belowEl=$('#below');
+
+function renderCats(){
+  catsEl.innerHTML = CATS.map(function(c){
+    var strip='', i;
+    for(i=1;i<=15;i++) strip+='<i'+(c.weeks.indexOf(i)>-1?' class="on"':'')+'></i>';
+    return '<button class="cat" role="tab" id="tab'+c.id+'" data-id="'+c.id+'" aria-selected="false" style="--c:var(--t'+c.id+')" aria-label="'+c.name+', '+c.team+', '+c.ipls+' IPLs. Anchor weeks '+c.weeks.join(', ')+'">'+
+      '<span class="nm">'+c.name+'</span>'+
+      '<span class="tm">'+c.team+', '+c.ipls+' IPLs</span>'+
+      '<span class="aud">'+c.audience+'</span>'+
+      '<span class="strip" aria-hidden="true">'+strip+'</span>'+
+      '<span class="strip-cap" aria-hidden="true"><span>Week 1</span><span>Anchor weeks filled</span><span>15</span></span>'+
+    '</button>';
+  }).join('');
+}
+function syncCats(){ catsEl.querySelectorAll('.cat').forEach(function(x){x.setAttribute('aria-selected',x.dataset.id===sel)}) }
+
+function renderBranch(mode){
+  var c = sel?CAT[sel]:null, total=0;
+  pillarsEl.hidden=!c; capEl.hidden=!c;
+  if(!c){
+    pillarsEl.innerHTML=''; belowEl.innerHTML='';
+    requestAnimationFrame(function(){drawLinks(mode)});
+    return;
+  }
+  pillarsEl.style.setProperty('--c','var(--t'+c.id+')');
+  pillarsEl.setAttribute('aria-labelledby','tab'+c.id);
+  capEl.style.setProperty('--c','var(--t'+c.id+')');
+  capEl.innerHTML = '<b>'+c.name+'</b>. Audience: '+c.audience.charAt(0).toLowerCase()+c.audience.slice(1)+'. Anchor weeks: '+c.weeks.join(', ')+'.';
+  pillarsEl.innerHTML = PILLARS.map(function(p,i){
+    var list=c.ideas[p.id]; total+=list.length;
+    return '<article class="pillar" style="--i:'+i+'">'+
+      '<button class="pnode" aria-expanded="false">'+
+        '<span class="pname">'+p.name+'</span>'+
+        '<span class="pgoal">'+p.goal+'</span>'+
+        '<span class="share"><span class="track"><i style="width:'+(p.share/30*100)+'%"></i></span><em>~'+p.share+'% of feed</em></span>'+
+        '<span class="count" aria-label="'+list.length+' ideas">'+list.length+'</span>'+
+      '</button>'+
+      '<ul class="ideas">'+list.map(function(t){return '<li>'+t+'</li>'}).join('')+'</ul>'+
+    '</article>';
+  }).join('');
+  belowEl.style.setProperty('--c','var(--t'+c.id+')');
+  belowEl.innerHTML = '<div class="tally"><span><b>'+total+'</b> ideas so far</span><span>The goal is 15 to 20 per team by the first sync, so no slot ever faces an empty head.</span><button class="btn2" id="allBtn" type="button">Show all ideas</button></div>'+
+    (c.note?'<div class="note">'+c.note+'</div>':'');
+  requestAnimationFrame(function(){
+    drawLinks(mode);
+    var r=pillarsEl.getBoundingClientRect();
+    if(mode==='branch' && r.top>window.innerHeight-220) window.scrollBy({top:r.top-window.innerHeight*0.45,behavior:reduce?'auto':'smooth'});
+  });
+}
+
+function pt(el,side){
+  var r=el.getBoundingClientRect(), c=chart.getBoundingClientRect();
+  return {x:r.left+r.width/2-c.left, y:(side==='b'?r.bottom:r.top)-c.top};
+}
+function curve(a,b){
+  var m=(a.y+b.y)/2;
+  return 'M'+a.x+' '+a.y+' C'+a.x+' '+m+' '+b.x+' '+m+' '+b.x+' '+b.y;
+}
+/* mode: 'root' animates root-to-category links, 'branch' animates category-to-pillar links, false redraws still */
+function drawLinks(mode){
+  svg.innerHTML='';
+  if(!wide()||!rootOpen) return;
+  if(mode) lastAnim=Date.now();
+  var c=chart.getBoundingClientRect();
+  svg.setAttribute('viewBox','0 0 '+c.width+' '+c.height);
+  var out='', rb=pt(rootEl,'b');
+  catsEl.querySelectorAll('.cat').forEach(function(el,i){
+    var id=el.dataset.id, strong=(sel===null||id===sel);
+    out+='<path pathLength="1" class="'+(strong?'on':'dim')+(mode==='root'?' draw':'')+'" style="stroke:var(--t'+id+');animation-delay:'+(i*60)+'ms'+(mode==='root'?'':';animation:none')+'" d="'+curve(rb,pt(el,'t'))+'"/>';
+  });
+  if(sel){
+    var from=pt(catsEl.querySelector('.cat[data-id="'+sel+'"]'),'b');
+    pillarsEl.querySelectorAll('.pnode').forEach(function(el,i){
+      out+='<path pathLength="1" class="on'+(mode==='branch'?' draw':'')+'" style="stroke:var(--t'+sel+');animation-delay:'+(i*70)+'ms'+(mode==='branch'?'':';animation:none')+'" d="'+curve(from,pt(el,'t'))+'"/>';
+    });
+  }
+  svg.innerHTML=out;
+}
+
+function setRoot(open){
+  rootOpen=open;
+  chart.classList.toggle('closed',!open);
+  rootEl.setAttribute('aria-expanded',open);
+  rootEl.querySelector('.hint').textContent=open?'Click to close':'Click to open';
+  catsEl.hidden=!open;
+  if(open){ catsEl.classList.remove('enter'); void catsEl.offsetWidth; catsEl.classList.add('enter') }
+  else { sel=null; syncCats() }
+  renderBranch(open?'root':false);
+}
+rootEl.addEventListener('click',function(){setRoot(!rootOpen)});
+
+function pickCat(id){
+  sel=(sel===id)?null:id;
+  syncCats();
+  renderBranch(sel?'branch':false);
+}
+catsEl.addEventListener('click',function(e){
+  var b=e.target.closest('.cat'); if(!b) return;
+  pickCat(b.dataset.id);
+});
+catsEl.addEventListener('keydown',function(e){
+  if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+  var ids=CATS.map(function(c){return c.id}), i=ids.indexOf(sel);
+  i=i<0?0:(i+(e.key==='ArrowRight'?1:ids.length-1))%ids.length;
+  sel=ids[i]; syncCats(); renderBranch('branch');
+  $('#tab'+sel).focus();
+});
+
+function updateAllBtn(){
+  var b=$('#allBtn'); if(!b) return;
+  var ps=pillarsEl.querySelectorAll('.pillar'), open=pillarsEl.querySelectorAll('.pillar.open');
+  b.textContent = open.length===ps.length ? 'Hide all ideas' : 'Show all ideas';
+}
+pillarsEl.addEventListener('click',function(e){
+  var n=e.target.closest('.pnode'); if(!n) return;
+  var open=n.parentElement.classList.toggle('open');
+  n.setAttribute('aria-expanded',open);
+  updateAllBtn();
+});
+belowEl.addEventListener('click',function(e){
+  if(!e.target.closest('#allBtn')) return;
+  var ps=pillarsEl.querySelectorAll('.pillar'), open=pillarsEl.querySelectorAll('.pillar.open');
+  var openAll=open.length!==ps.length;
+  ps.forEach(function(p){p.classList.toggle('open',openAll);p.querySelector('.pnode').setAttribute('aria-expanded',openAll)});
+  updateAllBtn();
+});
+
+window.addEventListener('resize',function(){drawLinks(false); renderTrend()});
+if(window.ResizeObserver){ new ResizeObserver(function(){ if(Date.now()-lastAnim<1400) return; drawLinks(false) }).observe(chart) }
+if(document.fonts&&document.fonts.ready){ document.fonts.ready.then(function(){drawLinks(false)}) }
+
+/* ============================ SAMPLE DATA ============================ */
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function makeSample(){
+  var r=rng(2026), out=[];
+  var ROTA=[[1,3,2],[2,4,3],[3,1,4],[4,2,1]];
+  var SLOTS=[['edu','Carousel'],['eng','Story set'],['insp','Reel']];
+  var bias={'1':1.0,'2':1.03,'3':1.08,'4':0.97,'Cross':1.12};
+  var fmtRate={'Reel':1.15,'Carousel':1.0,'Single image':0.85,'Story set':0.92};
+  var fmtReach={'Reel':1.7,'Carousel':1.0,'Single image':0.8,'Story set':0.6};
+  var pilRate={edu:1.0,eng:1.15,insp:1.1,promo:0.85,bts:1.0};
+  var mb={}; ['1','2','3','4','Cross'].forEach(function(t){mb[t]=[1,2,3,4].map(function(){return 1+(r()-.5)*.26})});
+  function add(w,team,pillar,format){
+    var m=Math.min(4,Math.ceil(w/4));
+    var rate=0.062*bias[team]*mb[team][m-1]*fmtRate[format]*pilRate[pillar]*(0.82+0.36*r());
+    var reach=Math.round(1400*fmtReach[format]*(0.7+0.6*r())*(1+w*0.03));
+    var inter=reach*rate;
+    var sv=format==='Carousel'?0.2:0.13, lk=format==='Carousel'?0.56:0.68;
+    out.push({week:w,team:team,pillar:pillar,format:format,reach:reach,
+      likes:Math.round(inter*lk),comments:Math.round(inter*0.09),shares:Math.round(inter*(1-lk-0.09-sv)),saves:Math.round(inter*sv),sample:true});
+  }
+  var A1=[4,5,6,13],A3=[1,2,3,8,14],A4=[9,12];
+  for(var w=1;w<=15;w++){
+    var rota=ROTA[(w-1)%4], dip=(w===7||w===15);
+    SLOTS.forEach(function(s,i){ if(dip&&i===1) return; add(w,String(rota[i]),s[0],s[1]) });
+    if(!dip){
+      if(A1.indexOf(w)>-1) add(w,'1','promo','Single image');
+      if(A3.indexOf(w)>-1) add(w,'3','promo','Single image');
+      if(A4.indexOf(w)>-1) add(w,'4','promo','Reel');
+      if(w>=5) add(w,'2','edu','Carousel');
+      if(w%3===0) add(w,String(rota[(w/3)%3]),'bts','Reel');
+    }
+  }
+  add(10,'Cross','insp','Reel'); add(11,'Cross','eng','Story set'); add(11,'Cross','insp','Reel'); add(15,'Cross','insp','Carousel');
+  return out;
+}
+
+/* ============================ STATE ============================ */
+var KEY='ipso-plan-dashboard-v1';
+var userPosts=[], sampleOn=true;
+try{
+  var saved=JSON.parse(localStorage.getItem(KEY)||'null');
+  if(saved){userPosts=saved.user||[]; sampleOn=saved.sampleOn!==false}
+}catch(e){}
+function save(){ try{localStorage.setItem(KEY,JSON.stringify({user:userPosts,sampleOn:sampleOn}))}catch(e){} }
+var sampleData=makeSample();
+function allPosts(){ return (sampleOn?sampleData:[]).concat(userPosts) }
+
+var period='all', teamFilter='all', includeCross=false, seen=false;
+var monthOf=function(w){return Math.min(4,Math.ceil(w/4))};
+var rateOf=function(p){return (p.likes+p.comments+p.shares+p.saves)/p.reach};
+var inPeriod=function(p){return period==='all'||monthOf(p.week)===period};
+var TEAMS=['1','2','3','4'];
+
+function teamPosts(tid,posts){ return posts.filter(function(p){return p.team===tid||(includeCross&&p.team==='Cross')}) }
+
+/* ============================ PODIUM ============================ */
+var CROWN='<svg class="crown" viewBox="0 0 30 22" fill="currentColor" aria-hidden="true"><path d="M2 20 0 5l8 6 7-10 7 10 8-6-2 15z"/></svg>';
+var HEIGHTS=[100,80,64,50];
+function renderPodium(){
+  var posts=allPosts().filter(inPeriod);
+  var scores=TEAMS.map(function(t){
+    var ps=teamPosts(t,posts);
+    return {id:t, n:ps.length, rate:ps.length?mean(ps.map(rateOf)):null};
+  }).sort(function(a,b){return (b.rate==null?-1:b.rate)-(a.rate==null?-1:a.rate)});
+  var top=scores[0].rate;
+  var el=$('#podium');
+  el.classList.remove('go');
+  el.innerHTML=scores.map(function(s,i){
+    var c=CAT[s.id], has=s.rate!=null;
+    var gap= !has?'No posts logged': i===0?'Leading': '−'+((top-s.rate)*100).toFixed(1)+' pts behind';
+    return '<div class="pod" data-t="'+s.id+'" style="--c:var(--t'+s.id+');--h:'+HEIGHTS[i]+'">'+
+      '<div class="pod-top">'+(i===0&&has?CROWN:'')+'<b><span class="full">'+c.short+'</span><span class="abbr">'+c.team+'</span></b><span><span class="full">'+c.team+', </span>'+s.n+' post'+(s.n===1?'':'s')+'</span></div>'+
+      '<div class="bar"><span class="rk">'+ordinal(i+1)+'</span><span class="rt">'+(has?pct(s.rate):'None')+'</span><span class="gp">'+gap+'</span></div>'+
+    '</div>';
+  }).join('');
+  var lead=scores[0];
+  $('#podiumNote').textContent = lead.rate==null
+    ? 'No posts logged for this period yet.'
+    : (period==='all'?'Semester so far: ':'Month '+period+': ')+CAT[lead.id].short+' leads at '+pct(lead.rate)+'. Podium height shows rank, the percentages are the real scores.';
+  if(seen){ void el.offsetWidth; requestAnimationFrame(function(){requestAnimationFrame(function(){el.classList.add('go')})}) }
+}
+function ordinal(n){return ['1st','2nd','3rd','4th'][n-1]}
+
+/* ============================ DASHBOARD ============================ */
+function filtered(){
+  var ps=allPosts().filter(inPeriod);
+  if(teamFilter==='all') return ps;
+  return teamPosts(teamFilter,ps);
+}
+function renderKPIs(){
+  var ps=filtered();
+  var reach=ps.reduce(function(a,p){return a+p.reach},0);
+  var inter=ps.reduce(function(a,p){return a+p.likes+p.comments+p.shares+p.saves},0);
+  var fm=byFormat(ps).sort(function(a,b){return b.rate-a.rate})[0];
+  $('#kpis').innerHTML=
+    kpi(ps.length,'Posts logged')+
+    kpi(reach.toLocaleString(),'Total reach')+
+    kpi(ps.length?pct(mean(ps.map(rateOf))):'None','Average engagement rate')+
+    kpi(fm?fm.name:'None','Best-performing format');
+}
+function kpi(v,l){return '<div class="kpi"><b>'+v+'</b><span>'+l+'</span></div>'}
+function byFormat(ps){
+  var m={};
+  ps.forEach(function(p){(m[p.format]=m[p.format]||[]).push(rateOf(p))});
+  return Object.keys(m).map(function(k){return {name:k,rate:mean(m[k]),n:m[k].length}});
+}
+
+function renderMix(){
+  var ps=filtered(), n=ps.length, out='', promoShare=0;
+  PILLARS.forEach(function(p){
+    var c=ps.filter(function(x){return x.pillar===p.id}).length, s=n?c/n:0;
+    if(p.id==='promo') promoShare=s;
+    out+='<div class="row"><span class="lb">'+p.name+'</span><span class="meter"><i style="width:'+Math.min(100,s*100/0.5*1)+'%"></i><u style="left:'+(p.share/50*100)+'%"></u></span><span class="vl">'+pct(s,0)+'</span></div>';
+  });
+  $('#mix').innerHTML = n?out:'<div class="empty">No posts in this view yet.</div>';
+  $('#mixWarn').innerHTML = (n>=5&&promoShare>0.4)
+    ? '<div class="warn">Promotional is '+pct(promoShare,0)+' of this view. The account is turning into a noticeboard. Pull it back with Engagement and Inspirational posts next month.</div>':'';
+}
+function renderFormats(){
+  var fs=byFormat(filtered()).sort(function(a,b){return b.rate-a.rate});
+  var max=fs.length?fs[0].rate:1;
+  $('#formats').innerHTML = fs.length ? fs.map(function(f){
+    return '<div class="row"><span class="lb">'+f.name+'</span><span class="meter"><i style="width:'+(f.rate/max*100)+'%"></i></span><span class="vl">'+pct(f.rate)+'</span></div>';
+  }).join('') + '<div class="key"><span>'+fs.map(function(f){return f.name+': '+f.n+' post'+(f.n===1?'':'s')}).join(', ')+'</span></div>'
+  : '<div class="empty">No posts in this view yet.</div>';
+}
+function teamTag(t){
+  if(t==='Cross') return '<span class="tag" style="--c:var(--t3)"><i style="background:linear-gradient(90deg,var(--t1),var(--t2),var(--t3),var(--t4))"></i>Campaign</span>';
+  return '<span class="tag" style="--c:var(--t'+t+')"><i></i>'+CAT[t].team+'</span>';
+}
+function renderBest(){
+  var ps=filtered().slice().sort(function(a,b){return rateOf(b)-rateOf(a)}).slice(0,6);
+  $('#best').innerHTML = ps.length ?
+    '<table><thead><tr><th>Week</th><th>Team</th><th>Pillar</th><th>Format</th><th>Reach</th><th>Engagement</th></tr></thead><tbody>'+
+    ps.map(function(p){return '<tr><td>'+p.week+'</td><td>'+teamTag(p.team)+'</td><td>'+PNAME[p.pillar]+'</td><td>'+p.format+'</td><td>'+p.reach.toLocaleString()+'</td><td><b>'+pct(rateOf(p))+'</b></td></tr>'}).join('')+
+    '</tbody></table>' : '<div class="empty">Nothing logged in this view. Add a post below.</div>';
+}
+
+function renderTrend(){
+  var W=720,H=250,m={l:40,r:14,t:12,b:26}, iw=W-m.l-m.r, ih=H-m.t-m.b;
+  var posts=allPosts(), series=TEAMS.map(function(t){
+    var pts=[]; for(var w=1;w<=15;w++){
+      var ps=teamPosts(t,posts).filter(function(p){return p.week===w});
+      pts.push(ps.length?mean(ps.map(rateOf)):null);
+    } return {t:t,pts:pts};
+  });
+  var all=[]; series.forEach(function(s){s.pts.forEach(function(v){if(v!=null)all.push(v)})});
+  if(!all.length){ $('#trend').innerHTML='<div class="empty">No data yet.</div>'; $('#legend').innerHTML=''; return }
+  var ymax=Math.ceil(Math.max.apply(null,all)*100/2)*2/100+0.02;
+  var x=function(w){return m.l+(w-1)/14*iw}, y=function(v){return m.t+ih-(v/ymax)*ih};
+  var g='', i;
+  for(i=0;i<=4;i++){var v=ymax*i/4; g+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="rgba(255,255,255,.12)"/><text x="'+(m.l-8)+'" y="'+(y(v)+4)+'" text-anchor="end">'+(v*100).toFixed(0)+'%</text>'}
+  for(i=1;i<=15;i+=2) g+='<text x="'+x(i)+'" y="'+(H-6)+'" text-anchor="middle">'+i+'</text>';
+  var band='';
+  if(period!=='all'){var a=(period-1)*4+1,b=Math.min(15,period*4); band='<rect x="'+(x(a)-8)+'" y="'+m.t+'" width="'+(x(b)-x(a)+16)+'" height="'+ih+'" rx="8" fill="rgba(255,255,255,.07)"/>'}
+  var lines=series.map(function(s){
+    var d='',pen=false,dots='';
+    s.pts.forEach(function(v,k){
+      if(v==null){pen=false;return}
+      d+=(pen?'L':'M')+x(k+1).toFixed(1)+' '+y(v).toFixed(1)+' '; pen=true;
+      dots+='<circle cx="'+x(k+1).toFixed(1)+'" cy="'+y(v).toFixed(1)+'" r="2.6" fill="var(--t'+s.t+')"/>';
+    });
+    return '<path d="'+d+'" fill="none" stroke="var(--t'+s.t+')" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>'+dots;
+  }).join('');
+  $('#trend').innerHTML='<svg class="trend" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Line chart of weekly engagement rate per team">'+band+g+
+    '<text x="'+(W/2)+'" y="'+(H+2)+'" text-anchor="middle"></text>'+lines+'</svg>';
+  $('#legend').innerHTML=TEAMS.map(function(t){return '<span style="--c:var(--t'+t+')"><i></i>'+CAT[t].short+'</span>'}).join('');
+}
+
+function renderBanner(){
+  var b=$('#banner'), hasSample=sampleOn, hasUser=userPosts.length>0;
+  if(hasSample){
+    b.innerHTML='<span><b>Sample data.</b> These numbers are generated to show how the scoring works. Add real posts below, then clear the sample.</span><button class="btn" id="clearSample" type="button">Clear sample data</button>';
+    $('#clearSample').onclick=function(){sampleOn=false;save();renderAll()};
+  }else if(!hasUser){
+    b.innerHTML='<span>The log is empty. Add your first post below, or load the sample data to see how it looks.</span><button class="btn" id="loadSample" type="button">Load sample data</button>';
+    $('#loadSample').onclick=function(){sampleOn=true;save();renderAll()};
+  }else{
+    b.innerHTML='<span>Showing '+userPosts.length+' post'+(userPosts.length===1?'':'s')+' you logged in this browser.</span><button class="btn" id="resetUser" type="button">Remove my entries</button>';
+    $('#resetUser').onclick=function(){userPosts=[];save();renderAll()};
+  }
+}
+
+function renderControls(){
+  var defs=[['all','Semester','Weeks 1 to 15'],[1,'Month 1','Weeks 1 to 4'],[2,'Month 2','Weeks 5 to 8'],[3,'Month 3','Weeks 9 to 12'],[4,'Month 4','Weeks 13 to 15']];
+  $('#months').innerHTML=defs.map(function(d){return '<button type="button" data-p="'+d[0]+'" aria-pressed="'+(String(d[0])===String(period))+'">'+d[1]+'<small>'+d[2]+'</small></button>'}).join('');
+  var chips='<button type="button" data-t="all" aria-pressed="'+(teamFilter==='all')+'">All teams</button>'+TEAMS.map(function(t){return '<button type="button" data-t="'+t+'" aria-pressed="'+(teamFilter===t)+'" style="--c:var(--t'+t+')"><span class="dot"></span>'+CAT[t].team+'</button>'}).join('');
+  $('#teamChips').innerHTML=chips;
+}
+$('#months').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  period=b.dataset.p==='all'?'all':+b.dataset.p; renderAll();
+});
+$('#teamChips').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  teamFilter=b.dataset.t; renderControls(); renderPanels();
+});
+$('#crossToggle').addEventListener('change',function(e){includeCross=e.target.checked; renderAll()});
+
+function renderPanels(){renderKPIs();renderMix();renderFormats();renderBest();renderTrend()}
+function renderAll(){renderControls();renderBanner();renderPodium();renderPanels()}
+
+/* ============================ FORM ============================ */
+$('#logForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var f=e.target, d=new FormData(f);
+  var p={week:+d.get('week'),team:d.get('team'),pillar:d.get('pillar'),format:d.get('format'),
+    likes:+d.get('likes'),comments:+d.get('comments'),shares:+d.get('shares'),saves:+d.get('saves'),reach:+d.get('reach'),sample:false};
+  if(!(p.reach>0)){$('#status').textContent='Reach must be more than zero.';return}
+  userPosts.push(p); save();
+  period=monthOf(p.week); renderAll();
+  $('#status').textContent='Added. Showing Month '+period+' with your post included ('+pct(rateOf(p))+' engagement).';
+});
+
+/* ============================ REVEAL ============================ */
+var stage=$('#stage');
+function showHeadline(){ stage.classList.add('lit') }
+function showPodium(){ seen=true; setTimeout(function(){$('#podium').classList.add('go')},reduce?0:250) }
+if('IntersectionObserver' in window){
+  var io1=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ showHeadline(); io1.disconnect() } },{threshold:.2});
+  io1.observe(document.querySelector('.reveal'));
+  var io2=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ showPodium(); io2.disconnect() } },{threshold:.35});
+  io2.observe($('#podium'));
+}else{ showHeadline(); showPodium() }
+
+/* ============================ INIT ============================ */
+renderCats();
+renderBranch(false);
+renderAll();
+</script>
+</body>
+</html>
