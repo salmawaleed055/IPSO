@@ -41,6 +41,10 @@ p{margin:0}
 /* ---------- Top ---------- */
 .top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:14px;color:var(--muted);flex-wrap:wrap}
 .top b{color:var(--ink);font-weight:600}
+.brand{display:inline-flex;align-items:center;gap:14px;min-width:0}
+.logo{display:inline-flex;align-items:center;flex:none;background:#fff;border:1px solid var(--line);border-radius:12px;padding:7px 12px}
+.logo img{display:block;height:44px;width:auto;max-width:100%}
+.logo.missing{display:none}
 .hero{padding:34px 0 56px;max-width:760px}
 .hero h1{font-size:clamp(2.5rem,5.6vw,4.4rem);font-weight:700}
 .hero p{margin-top:20px;font-size:1.15rem;color:var(--muted);max-width:56ch}
@@ -209,7 +213,8 @@ form.log .act{grid-column:1/-1;display:flex;gap:14px;align-items:center;flex-wra
 #status{font-size:.9rem;color:var(--st-muted)}
 
 footer{background:var(--st-bg);color:var(--st-muted);padding:30px 0 50px;font-size:.88rem;border-top:1px solid var(--st-line)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:8px 30px;justify-content:space-between}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;justify-content:space-between;align-items:center}
+footer .brand{gap:16px}
 footer a{color:var(--st-ink)}
 
 /* ---------- Responsive ---------- */
@@ -230,6 +235,7 @@ footer a{color:var(--st-ink)}
 }
 @media (max-width:640px){
   .wrap{padding:0 18px}
+  .logo img{height:36px}
   .podium{height:340px;gap:8px}
   .podium.go .bar{height:calc(var(--h) * 2.1px)}
   .bar{padding:10px}
@@ -259,11 +265,14 @@ footer a{color:var(--st-ink)}
 
 <div class="wrap">
   <div class="top">
-    <span><b>American University in Cairo</b>, International Programs and Services Office</span>
+    <span class="brand">
+      <span class="logo"><img src="logo.png" alt="The American University in Cairo logo" onerror="this.parentNode.classList.add('missing')"></span>
+      <span><b>American University in Cairo</b>, International Programs and Services Office</span>
+    </span>
     <span>Version 4, Fall 2026</span>
   </div>
   <header class="hero">
-    <h1>How IPSO’s Instagram is organized</h1>
+    <h1>IPSO'S Social media Plan</h1>
     <p>Start with the account. Click it to open the four categories, click a category to see its five pillars, then click a pillar to see the ideas inside it.</p>
   </header>
 </div>
@@ -388,7 +397,10 @@ footer a{color:var(--st-ink)}
 
 <footer>
   <div class="wrap">
-    <span>Source: IPSO Instagram Content Plan, version 4. Prepared for the 14 IPLs and IPSO staff.</span>
+    <span class="brand">
+      <span class="logo"><img src="logo.png" alt="The American University in Cairo logo" onerror="this.parentNode.classList.add('missing')"></span>
+      <span>Source: IPSO Instagram Content Plan, version 4. Prepared for the 14 IPLs and IPSO staff.</span>
+    </span>
     <span>Exact dates live in the <a href="https://docs.google.com/spreadsheets/d/1FTN87W8MmGNqzpUm5sJgQ4ulf2AeoG9sMiVd0MGGQoY" target="_blank" rel="noopener">calendar spreadsheet</a>.</span>
   </div>
 </footer>
@@ -437,14 +449,15 @@ var CATS = [
     bts:['Airport pickup and arrival-day footage','Orientation day bloopers','IPLs prepping welcome kits']
    }},
   {id:'4', name:'Faculty-Led Programs', short:'Faculty-Led Programs', team:'Team 4', ipls:3,
-   audience:'AUC students weighing a short-term or summer programme',
+   audience:'Faculty and students at other universities weighing a short-term Cairo program, plus AUC students who may share classes with visiting groups',
    weeks:[9,12],
+   note:'Accuracy check: on AUC’s own pages, faculty-led programs (branded Egypt 360) are hosted in Cairo. A visiting university brings its own students and a faculty leader for 1 week to 3 months in winter (January to February, apply by 15 August) or summer (May to August, apply by 15 January). Credit comes from the visiting university, not AUC. I found no AUC page describing outbound faculty-led trips for AUC students, so confirm with IPSO before promoting any. Also get IPSO’s approval before naming a visiting university or showing its students.',
    ideas:{
-    edu:['“What is a faculty-led program?” explainer vs. semester exchange','How credits and cost work','Application steps carousel'],
-    eng:['Poll: “Which faculty-led destination interests you most?”','“Guess the course” from a site-visit photo'],
-    insp:['Faculty and student testimonials from past cohorts','Recap Reels set to trending audio from the trip itself','“A day on the program” mini-vlog'],
-    promo:['Programme announcements per school or department','Application deadlines','Info sessions with the leading faculty member'],
-    bts:['Faculty prepping the itinerary','Group photos from site visits','Packing and pre-departure meeting']
+    edu:['“What is Egypt 360?” explainer: AUC hosts faculty-led groups from universities worldwide for 1 week to 3 months, in winter or summer','“How a program gets built” carousel: email IPSO, consultation and proposal, agreement, then itinerary submission','“What’s included” carousel: airport meet-and-assist, orientation and campus tour, student ID with Wi-Fi, AUC dorms (subject to availability), guided excursions, welcome and farewell dinners','Credit explainer: academic credit comes from the visiting university, not AUC','Topic menu: ancient Egyptian history, modern politics, entrepreneurship, Islamic architecture, and Arabic (Modern Standard or Egyptian Colloquial)'],
+    eng:['“Guess the site” from an excursion photo: the Pyramids, Saqqara, Alexandria or the Grand Egyptian Museum','Poll: “Which course would you take with a visiting class: history, politics, entrepreneurship or architecture?”','“Which university visited AUC?” quiz drawn from IPSO’s list of past visiting universities','Question box for AUC students: “What would you show a visiting student in Cairo?”'],
+    insp:['“Two campuses, one classroom” Reels on shared courses, as when Oberlin and George Washington groups studied alongside AUC students','Visiting-student takeover in Stories during a program week, with the group’s permission','Faculty leader spotlight: why they chose Cairo as their classroom','Community day recaps, such as past groups’ visits to NGOs like Resala Charity Organization','Testimonial quote cards from past participants (get written permission first)'],
+    promo:['Summer program (May to August) countdown to the 15 January application deadline','Winter program (January to February) reminder that applications close 15 August','“Bring your class to Cairo” call to action: email ipso@aucegypt.edu to start','Arrival announcements and farewell-dinner recaps when a visiting group is on campus'],
+    bts:['IPSO staff building an itinerary and budget with a visiting faculty leader','Airport meet-and-assist and campus-tour footage (coordinate with Team 3)','Transport and security crew preparing an excursion day','Welcome and farewell dinner setup']
    }}
 ];
 var CAT = {}; CATS.forEach(function(c){CAT[c.id]=c});
