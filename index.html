@@ -50,7 +50,7 @@ p{margin:0}
 .hero p{margin-top:20px;font-size:1.15rem;color:var(--muted);max-width:56ch}
 
 /* ---------- Chart ---------- */
-.chart-sec{padding-bottom:150px}
+.chart-sec{padding-bottom:80px}
 .chart{position:relative}
 .links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .links path{fill:none;stroke-width:2;stroke-linecap:round}
@@ -113,6 +113,26 @@ p{margin:0}
 .tally{position:relative;z-index:1;margin-top:44px;display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;color:var(--muted);font-size:.95rem}
 .tally b{font-family:var(--display);font-size:1.5rem;color:var(--ink);letter-spacing:-.02em}
 .note{margin-top:14px;padding:14px 18px;border-radius:14px;background:color-mix(in srgb,var(--c) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--c) 40%,var(--line));max-width:70ch;font-size:.95rem}
+
+/* ---------- Weekly calendar ---------- */
+.week-sec{padding:0 0 150px}
+.week-head{max-width:66ch;margin-bottom:30px}
+.week-head h2{font-size:clamp(1.9rem,3.8vw,2.8rem);font-weight:700}
+.week-head p{margin-top:12px;color:var(--muted)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px}
+.day{--c:var(--muted);display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-top:5px solid var(--c);border-radius:14px;padding:14px 14px 16px}
+.day header{display:flex;flex-direction:column;gap:6px}
+.day h3{font-size:1.2rem;font-weight:700}
+.day .pl{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:.86rem;line-height:1.2}
+.day .pl i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--c)}
+.day .body{display:flex;flex-direction:column;gap:8px;flex:1}
+.day .fm{font-size:.8rem;font-weight:600;color:var(--muted)}
+.day p{font-size:.86rem;line-height:1.45}
+.day .alt{font-size:.8rem;color:var(--muted);line-height:1.4;padding-top:8px;border-top:1px solid var(--line);margin-top:auto}
+.day.off{background:transparent;border-style:dashed;border-top-style:dashed}
+.day.off h3,.day.off p{color:var(--muted)}
+.week-foot{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 24px;color:var(--muted);font-size:.9rem}
+.week-foot b{color:var(--ink);font-weight:600}
 
 /* ---------- Stage (the reveal) ---------- */
 .stage{--ink:var(--st-ink);--muted:var(--st-muted);--line:var(--st-line);--surface:var(--st-panel);
@@ -218,6 +238,9 @@ footer .brand{gap:16px}
 footer a{color:var(--st-ink)}
 
 /* ---------- Responsive ---------- */
+@media (max-width:1180px) and (min-width:1000px){
+  .week{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
 @media (max-width:999px){
   .links{display:none}
   .root{margin-bottom:28px}
@@ -225,7 +248,12 @@ footer a{color:var(--st-ink)}
   .cat .aud{display:none}
   .cap{display:block;margin-top:0}
   .pillars{grid-template-columns:minmax(0,1fr);gap:18px}
-  .chart-sec{padding-bottom:110px}
+  .chart-sec{padding-bottom:60px}
+  .week-sec{padding-bottom:110px}
+  .week{grid-template-columns:minmax(0,1fr);gap:10px}
+  .day{display:grid;grid-template-columns:150px minmax(0,1fr);column-gap:20px;align-items:start;border-top:1.5px solid var(--line);border-left:5px solid var(--c)}
+  .day.off{border-top-style:dashed;border-left-style:dashed}
+  .day .alt{margin-top:0}
   .grid{grid-template-columns:minmax(0,1fr)}
   .span7,.span5,.span12{grid-column:auto}
   .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -236,6 +264,7 @@ footer a{color:var(--st-ink)}
 @media (max-width:640px){
   .wrap{padding:0 18px}
   .logo img{height:36px}
+  .day{grid-template-columns:minmax(0,1fr);row-gap:8px}
   .podium{height:340px;gap:8px}
   .podium.go .bar{height:calc(var(--h) * 2.1px)}
   .bar{padding:10px}
@@ -291,6 +320,105 @@ footer a{color:var(--st-ink)}
       <div class="cap" id="cap" hidden></div>
       <div class="pillars" id="pillars" role="tabpanel" hidden></div>
       <div id="below"></div>
+    </div>
+  </div>
+</section>
+
+<section class="week-sec" id="week" aria-label="A typical posting week">
+  <div class="wrap">
+    <div class="week-head">
+      <h2>A typical week</h2>
+      <p>Three core posts every week, plus promotional and behind-the-scenes posts when there is something real to show. The team whose turn it is that week owns the day’s post. The week follows AUC’s Sunday to Thursday work week, so Friday and Saturday stay light.</p>
+    </div>
+
+    <div class="week">
+      <article class="day" style="--c:var(--t1)">
+        <header>
+          <h3>Sunday</h3>
+          <span class="pl"><i></i>Educational</span>
+        </header>
+        <div class="body">
+          <span class="fm">Carousel</span>
+          <p>Start the week with something useful: an FAQ, a checklist or a how-to. Think visa timelines, credit transfer, or “Settling into Cairo”.</p>
+          <span class="alt">Saves and shares are the goal here.</span>
+        </div>
+      </article>
+
+      <article class="day" style="--c:var(--t2)">
+        <header>
+          <h3>Monday</h3>
+          <span class="pl"><i></i>Engagement</span>
+        </header>
+        <div class="body">
+          <span class="fm">Story set</span>
+          <p>Ask something people can answer in one tap: a poll, a quiz, “this or that”, or a question box.</p>
+          <span class="alt">Goal: replies and DMs, not just views.</span>
+        </div>
+      </article>
+
+      <article class="day" style="--c:var(--t3)">
+        <header>
+          <h3>Tuesday</h3>
+          <span class="pl"><i></i>Promotional</span>
+        </header>
+        <div class="body">
+          <span class="fm">Single image or Reel</span>
+          <p>Deadlines, info sessions, sign-ups and event invites. Post only when there is a real date to announce.</p>
+          <span class="alt">No news that week? Use the slot for a Partner Spotlight instead.</span>
+        </div>
+      </article>
+
+      <article class="day" style="--c:var(--t4)">
+        <header>
+          <h3>Wednesday</h3>
+          <span class="pl"><i></i>Inspirational</span>
+        </header>
+        <div class="body">
+          <span class="fm">Reel</span>
+          <p>Real student voices: a takeover, a testimonial, a before and after, or honest culture-shock stories.</p>
+          <span class="alt">The weekly Story takeover runs alongside it.</span>
+        </div>
+      </article>
+
+      <article class="day" style="--c:var(--muted)">
+        <header>
+          <h3>Thursday</h3>
+          <span class="pl"><i></i>Behind-the-Scenes</span>
+        </header>
+        <div class="body">
+          <span class="fm">Reel or Stories</span>
+          <p>Show the office at work: orientation prep, welcome kits, partner visits, airport pickups.</p>
+          <span class="alt">About every third week. Other weeks, reshare posts you were tagged in.</span>
+        </div>
+      </article>
+
+      <article class="day off">
+        <header>
+          <h3>Friday</h3>
+          <span class="pl"><i></i>Admin day</span>
+        </header>
+        <div class="body">
+          <span class="fm">No feed post</span>
+          <p>Fill in the Post Log for posts published a week ago, once their numbers have settled. Reshare any tagged content to Stories.</p>
+        </div>
+      </article>
+
+      <article class="day off">
+        <header>
+          <h3>Saturday</h3>
+          <span class="pl"><i></i>Off</span>
+        </header>
+        <div class="body">
+          <span class="fm">No posting</span>
+          <p>Rest day. Only reply to comments and DMs if something urgent comes in.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="week-foot">
+      <span><b>3 core posts</b> every week: Educational, Engagement, Inspirational</span>
+      <span><b>Up to 2 extras</b> when needed: Promotional, Behind-the-Scenes</span>
+      <span>Exact dates live in the <a href="https://docs.google.com/spreadsheets/d/1FTN87W8MmGNqzpUm5sJgQ4ulf2AeoG9sMiVd0MGGQoY" target="_blank" rel="noopener">calendar spreadsheet</a></span>
     </div>
   </div>
 </section>
